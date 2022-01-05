@@ -34,7 +34,7 @@ namespace CabInvoice
         {
             double totalfare = 0;
             totalfare = distance * COST_PER_KM + Time * COST_PER_TIME;
-            return Math.Max(totalfare, MINIMUM_FARE);
+            return totalfare;
         }
     }
 }
