@@ -11,6 +11,10 @@ namespace CabInvoice
         //Variables
         public double distance;
         public int Time;
+        public double[] rides;
+        public double TotalFare;
+        public double AvgFare;
+        public int NumberOfRides;
         //Constants
         private readonly double COST_PER_KM;
         private readonly int COST_PER_TIME;
@@ -34,6 +38,20 @@ namespace CabInvoice
         {
             double totalfare = 0;
             totalfare = distance * COST_PER_KM + Time * COST_PER_TIME;
+            return totalfare;
+        }
+        /// <summary>
+        /// Method to calculate multiple rides
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public double CalculateFare(Rides[] ride)
+        {
+            double totalfare = 0;
+            foreach(Rides rides in ride)
+            {
+                totalfare = totalfare + CalculateFare(rides.distance,rides.time);
+            }
             return totalfare;
         }
     }
